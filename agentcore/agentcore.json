@@ -1,0 +1,101 @@
+{
+  "name": "TripPlannerA2A",
+  "version": 1,
+  "managedBy": "CDK",
+  "tags": {
+    "agentcore:created-by": "agentcore-cli",
+    "agentcore:project-name": "TripPlannerA2A",
+    "workshop": "a2a"
+  },
+  "runtimes": [
+    {
+      "name": "FlightsAgent",
+      "description": "Servidor A2A que busca vuelos entre ciudades (datos mock).",
+      "build": "CodeZip",
+      "entrypoint": "main.py",
+      "codeLocation": "app/FlightsAgent/",
+      "runtimeVersion": "PYTHON_3_13",
+      "networkMode": "PUBLIC",
+      "protocol": "A2A",
+      "envVars": [
+        {
+          "name": "MODEL_ID",
+          "value": "us.amazon.nova-lite-v1:0"
+        }
+      ]
+    },
+    {
+      "name": "WeatherAgent",
+      "description": "Servidor A2A que consulta el pronostico del clima (datos mock).",
+      "build": "CodeZip",
+      "entrypoint": "main.py",
+      "codeLocation": "app/WeatherAgent/",
+      "runtimeVersion": "PYTHON_3_13",
+      "networkMode": "PUBLIC",
+      "protocol": "A2A",
+      "envVars": [
+        {
+          "name": "MODEL_ID",
+          "value": "us.amazon.nova-lite-v1:0"
+        }
+      ]
+    },
+    {
+      "name": "HotelsAgent",
+      "description": "Servidor A2A que busca hoteles por ciudad (datos mock).",
+      "build": "CodeZip",
+      "entrypoint": "main.py",
+      "codeLocation": "app/HotelsAgent/",
+      "runtimeVersion": "PYTHON_3_13",
+      "networkMode": "PUBLIC",
+      "protocol": "A2A",
+      "envVars": [
+        {
+          "name": "MODEL_ID",
+          "value": "us.amazon.nova-lite-v1:0"
+        }
+      ]
+    },
+    {
+      "name": "OrchestratorAgent",
+      "description": "Cliente A2A: recibe la peticion del usuario, invoca FlightsAgent, WeatherAgent y HotelsAgent, y devuelve una respuesta consolidada.",
+      "build": "CodeZip",
+      "entrypoint": "main.py",
+      "codeLocation": "app/OrchestratorAgent/",
+      "runtimeVersion": "PYTHON_3_13",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "additionalPolicies": ["invoke-policy.json"],
+      "envVars": [
+        {
+          "name": "MODEL_ID",
+          "value": "us.amazon.nova-lite-v1:0"
+        },
+        {
+          "name": "FLIGHTS_AGENT_URL",
+          "value": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A113410693163%3Aruntime%2FTripPlannerA2A_FlightsAgent-qIJreU42fo/invocations/"
+        },
+        {
+          "name": "WEATHER_AGENT_URL",
+          "value": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A113410693163%3Aruntime%2FTripPlannerA2A_WeatherAgent-Q0CfsR6BE3/invocations/"
+        },
+        {
+          "name": "HOTELS_AGENT_URL",
+          "value": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A113410693163%3Aruntime%2FTripPlannerA2A_HotelsAgent-LbMU6mAJfA/invocations/"
+        }
+      ]
+    }
+  ],
+  "memories": [],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": [],
+  "datasets": [],
+  "payments": []
+}

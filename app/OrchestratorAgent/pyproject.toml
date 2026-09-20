@@ -1,0 +1,12 @@
+[project]
+name = "orchestrator-agent"
+version = "1.0.0"
+description = "Cliente A2A orquestador del Trip Planner (Workshop)"
+requires-python = ">=3.10"
+dependencies = [
+    "strands-agents[a2a]>=0.1.0",
+    "bedrock-agentcore>=0.1.0",
+]
+
+[tool.agentcore]
+entrypoint = "main.py"

@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "InvokeSpecialistRuntimes",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock-agentcore:InvokeAgentRuntime"
+      ],
+      "Resource": [
+        "arn:aws:bedrock-agentcore:us-east-1:113410693163:runtime/TripPlannerA2A_FlightsAgent-*",
+        "arn:aws:bedrock-agentcore:us-east-1:113410693163:runtime/TripPlannerA2A_WeatherAgent-*",
+        "arn:aws:bedrock-agentcore:us-east-1:113410693163:runtime/TripPlannerA2A_HotelsAgent-*"
+      ]
+    }
+  ]
+}

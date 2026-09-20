@@ -1,0 +1,38 @@
+# Entorno virtual
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Variables de entorno / secretos
+.env
+.env.local
+.env.*
+
+# AgentCore CLI
+agentcore/.cli/logs/
+agentcore/.cli/deployed-state.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Copias sincronizadas de `shared` dentro de cada agente (generadas por scripts/sync_shared.py)
+app/FlightsAgent/shared/
+app/WeatherAgent/shared/
+app/HotelsAgent/shared/
+app/OrchestratorAgent/shared/

@@ -1,0 +1,8 @@
+# Workshop A2A — dependencias compartidas
+# Instalar con: uv pip install -r requirements.txt
+#
+# strands-agents[a2a]  →  framework de agentes + soporte A2AServer / A2AAgent
+# bedrock-agentcore    →  BedrockAgentCoreApp (entrypoint del orquestador en Runtime)
+
+strands-agents[a2a]>=0.1.0
+bedrock-agentcore>=0.1.0
